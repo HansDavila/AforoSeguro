@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <RelativeLayout
+    tools:context=".ConectarBt"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="44sp"
+        android:padding="10dp"
+        android:text="@string/conectar_bt"
+        android:gravity="center"
+        android:id="@+id/titulo_conectar"/>
+
+
+    -<LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/linear_lista_Bt"
+    android:layout_marginTop="20dp"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_below="@+id/titulo_conectar">
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/buscar"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/search" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/conectar"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/connect" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:text="@string/continuar_no_bt"
+        android:id="@+id/continuar_no_bt" />
+
+</LinearLayout>
+
+    <ListView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/listview"
+        android:layout_marginTop="0dp"
+        android:layout_below="@+id/linear_lista_Bt"
+        android:layout_margin="20dp"/>
+
+</RelativeLayout>

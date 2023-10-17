@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Puerta Covid</string>
+    <string name="historial">Historial</string>
+    <string name="cuenta">Cuenta</string>
+    <string name="salir">Salir</string>
+    <string name="inicio">Inicio</string>
+    <string name="select_language">Selecciona el lenguaje</string>
+    <string name="aforo">Aforo</string>
+    <string name="puertasegura">Puerta Segura</string>
+    <string name="aforoSeguro">Aforo Seguro</string>
+    <string name="abrirpuerta">Abrir Puerta</string>
+    <string name="messages">Mensaje del dia</string>
+
+    <string name="historial_gente">Personas en el dia</string>
+    <string name="cerrarpuerta">Cerrar Puerta</string>
+    <string name="usuario">Usuario</string>
+    <string name="administrador">Administrador</string>
+    <string name="cuentausuario">Cuenta Usuario</string>
+    <string name="conectar">Entrar</string>
+    <string name="capacidad">Capacidad: 20 personas</string>
+    <string name="buscar">Buscar</string>
+    <string name="salir2">Salir</string>
+
+    <string name="conectar_bt">Conectar dispositivo</string>
+    <string name="recuperacontraseña">Recupera tu contraseña</string>
+    <string name="ingresaemail">Ingresa tu correo</string>
+    <string name="reestablecercontraseña">Reestablecer contraseña</string>
+    <string name="continuar_no_bt">Continuar sin BT</string>
+    <string name="automatizar">Automatizar</string>
+    <string name="iniciar">Iniciar Sesión</string>
+    <string name="registrar">Registrarse</string>
+    <string name="yacuenta">¿Ya cuenta con una cuenta?       </string>
+    <string name="crearcuenta">Crear cuenta</string>
+    <string name="escribiremail">Escriba un correo electronico</string>
+    <string name="escribircontra">Escriba una contraseña</string>
+    <string name="confirmarcontra">Confirme la contraseña</string>
+    <string name="administrator">Administrador</string>
+    <string name="welcome">Bienvenido</string>
+    <string name="nocuenta">¿No tiene una cuenta?</string>
+    <string name="seleccion">Selección de lenguaje</string>
+    <string name="register_text">Registarse</string>
+    <string name="first_name">Primer nombre</string>
+    <string name="last_name">Apellido</string>
+    <string name="phone">Telefono</string>
+    <string name="date_of_birth">Fecha de nacimiento</string>
+    <string name="bio">bio</string>
+    <string name="people">Personas dentro</string>
+    <string name="continue_text">Continuar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

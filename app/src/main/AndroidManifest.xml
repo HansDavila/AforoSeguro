@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.puertacovid">
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/aforoSeguro"
+        tools:replace="android:label"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PuertaCovid"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".sdktest.JoinVideoCall" />
+        <activity android:name=".sdktest.videoLlamada" />
+        <activity android:name=".ConectarBt" />
+        <activity android:name=".CuentaUsuario" />
+        <activity android:name=".Cuenta" />
+        <activity android:name=".Historial" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".InicioSesion" />
+        <activity android:name=".RegistroActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".UsuarioActivity" />
+        <activity android:name=".Mensaje_usuario" />
+        <activity android:name=".Mensaje_advertencia" />
+        <activity android:name=".Registro_dia" />
+        <activity android:name=".InicioActivity" />
+        <activity android:name=".StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

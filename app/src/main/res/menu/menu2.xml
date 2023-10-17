@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/inicio"
+        android:title="Chat" />
+    <item
+        android:id="@+id/cuenta"
+        android:title="@string/cuenta" />
+    <item
+        android:id="@+id/videocall"
+        android:title="@string/messages" />
+    <item
+        android:id="@+id/peopleday"
+        android:title="@string/historial_gente" />
+    <item
+        android:id="@+id/salir"
+        android:title="@string/salir" />
+</menu>
