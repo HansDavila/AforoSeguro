@@ -1,37 +1,26 @@
 {
   "project_info": {
-    "project_number": "967113754398",
-    "firebase_url": "https://puertacovid2021-57198-default-rtdb.firebaseio.com",
-    "project_id": "puertacovid2021-57198",
-    "storage_bucket": "puertacovid2021-57198.appspot.com"
+    "project_number": "60115876143",
+    "project_id": "aforoseguro-687a2",
+    "storage_bucket": "aforoseguro-687a2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:967113754398:android:6c91af11ae9389400ceb0f",
+        "mobilesdk_app_id": "1:60115876143:android:998ccb95f9a9a6e596c9da",
         "android_client_info": {
           "package_name": "com.example.puertacovid"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "967113754398-7hth5jvp3vhl46taq0glmmllinodtj8r.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC7beeTSZhQ7VldBao968Z3qb52tSGfa6s"
+          "current_key": "AIzaSyBWclLgaMvv0V6pY1-l6FiXegOO7koh3Go"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "967113754398-7hth5jvp3vhl46taq0glmmllinodtj8r.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

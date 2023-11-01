@@ -22,8 +22,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.puertacovid.Common.Common;
 import com.example.puertacovid.Model.UserModel;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
@@ -155,14 +157,20 @@ public class InicioSesion extends AppCompatActivity {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-                FirebaseUser email= firebaseAuth.getCurrentUser();
-                if(!email.isEmailVerified()){
-                    Toast.makeText(InicioSesion.this, "Correo electronico no verificado", Toast.LENGTH_LONG).show();
-                }
-                if(email.isEmailVerified()) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                    Toast.makeText(InicioSesion.this, "Inicio de sesion completo", Toast.LENGTH_LONG).show();
-                    checkUserAccessLevel(authResult.getUser().getUid());
+                if (user != null) {
+                    user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(InicioSesion.this, "Inicio de sesion completo", Toast.LENGTH_LONG).show();
+                                checkUserAccessLevel(authResult.getUser().getUid());
+                            } else {
+                                Toast.makeText(InicioSesion.this, "Error al enviar el correo de verificación", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -207,6 +215,11 @@ public class InicioSesion extends AppCompatActivity {
                     startActivity(new Intent(InicioSesion.this,UsuarioActivity.class));
                     finish();
                 }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("TAG", "Error al obtener el documento: ", e);
             }
         });
     }

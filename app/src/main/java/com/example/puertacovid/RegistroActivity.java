@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.puertacovid.Common.Common;
 import com.example.puertacovid.Model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -207,6 +209,7 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    Log.d("TAG", "Usuario creado con éxito");
                     Toast.makeText(RegistroActivity.this, "Registro Completo, por favor, verifica tu email", Toast.LENGTH_LONG).show();
                     FirebaseUser email = firebaseAuth.getCurrentUser();
                     FirebaseUser user = fAuth.getCurrentUser();
@@ -241,22 +244,36 @@ public class RegistroActivity extends AppCompatActivity {
                     userModel.setBirthdate(calendar.getTimeInMillis());
                     userModel.setUid(userid);
 
+
+                    df.set(userInfo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d("TAG", "Datos guardados con éxito en Firestore");
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d("TAG", "Error al guardar en Firestore: " + e.getMessage());
+                        }
+                    });
+
                     userRef.child(userModel.getUid())
                             .setValue(userModel)
-                            .addOnFailureListener(e ->{
+                            .addOnFailureListener(e -> {
+                                Log.d("TAG", e.getMessage());
                                 Toast.makeText(RegistroActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             })
-                            .addOnSuccessListener(aVoid ->{
+                            .addOnSuccessListener(aVoid -> {
+                                Log.d("TAG", "Información del usuario guardada en Realtime Database");
                                 Common.currentUser=userModel;
-                                df.set(userInfo);
-                                startActivity(new Intent(RegistroActivity.this,StartActivity.class));
+                                startActivity(new Intent(RegistroActivity.this, StartActivity.class));
                                 finish();
                             });
 
 
 
                 } else {
-                    Toast.makeText(RegistroActivity.this, "Registro Fallido", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegistroActivity.this, "Registro Fallido: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                 }
                 progressDialog.dismiss();
             }
