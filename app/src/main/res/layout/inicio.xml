@@ -30,6 +30,13 @@
         android:textSize="25dp"
         android:visibility="invisible" />
 
+    <TextView
+        android:id="@+id/CampoTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cargando..."
+        android:layout_centerInParent="true"/>
+
     <EditText
         android:id="@+id/aforo"
         android:layout_width="62dp"

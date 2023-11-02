@@ -37,8 +37,12 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import okhttp3.ResponseBody;
+
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,6 +51,12 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class InicioActivity extends AppCompatActivity {
     Spinner spinner;
@@ -64,6 +74,7 @@ public class InicioActivity extends AppCompatActivity {
 
     private TextView mTxtReceive;
     private CheckBox chkReceiveText;
+    private TextView campoTxt;
 
     //private boolean mIsBluetoothConnected = false;
 
@@ -99,6 +110,41 @@ public class InicioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
+
+        campoTxt = findViewById(R.id.CampoTxt);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.0.7:5000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ApiService apiService = retrofit.create(ApiService.class);
+        Call<ResponseBody> call = apiService.getStringFromPython();
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.body().string());
+                        String data = jsonObject.getString("data");
+                        campoTxt.setText(data);
+                    } catch (JSONException | IOException e) {
+                        e.printStackTrace();
+                        Log.e("API_ERROR", "Error al procesar la respuesta", e);
+                    }
+                } else {
+                    Log.e("API_ERROR", "Respuesta no exitosa: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                t.printStackTrace();
+                Log.e("API_ERROR", "Error al hacer la llamada", t);
+                campoTxt.setText("Error: " + t.getMessage());
+            }
+        });
 
         spinner = findViewById(R.id.spinner);
         mAuth = FirebaseAuth.getInstance();
@@ -251,7 +297,7 @@ mBtnConectar.setOnClickListener(new View.OnClickListener() {
         int id = item.getItemId();
 
         if (id == R.id.inicio){
-            Intent intent = new Intent(InicioActivity.this, HomeActivity.class);
+            Intent intent = new Intent(InicioActivity.this, ChatActivity.class);
             startActivity(intent);
         }else if (id == R.id.salir){
             FirebaseAuth.getInstance().signOut();

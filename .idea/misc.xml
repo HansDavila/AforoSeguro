@@ -3,12 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/activity_chat.xml" value="0.55" />
+        <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/activity_chat.xml" value="0.4" />
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/activity_conectar_bt.xml" value="0.55" />
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/activity_cuenta.xml" value="0.55" />
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/activity_cuenta_usuario.xml" value="0.55" />
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/activity_historial.xml" value="0.55" />
-        <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/activity_home.xml" value="0.55" />
+        <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/activity_inicio_sesion.xml" value="0.55" />
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/activity_join_video_call.xml" value="0.55" />
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/activity_main.xml" value="0.29583333333333334" />
@@ -20,7 +20,7 @@
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/activity_usuario.xml" value="0.55" />
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/activity_video_llamada.xml" value="0.55" />
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/chat_fragment.xml" value="0.55" />
-        <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/inicio.xml" value="0.55" />
+        <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/inicio.xml" value="0.38461538461538464" />
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/layout_chat_item.xml" value="0.55" />
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/layout_message_picture_friend.xml" value="0.55" />
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/layout_message_picture_own.xml" value="0.55" />
@@ -30,6 +30,8 @@
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/list_item.xml" value="0.55" />
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/people_fragment.xml" value="0.55" />
         <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/layout/registro.xml" value="0.55" />
+        <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/menu/menu.xml" value="0.1953125" />
+        <entry key="..\:/UANL/LAB SISTEMAS INTELIGENTES/Proyecto Puerta Covid/PuertaCovid/app/src/main/res/menu/menu2.xml" value="0.1953125" />
       </map>
     </option>
   </component>
