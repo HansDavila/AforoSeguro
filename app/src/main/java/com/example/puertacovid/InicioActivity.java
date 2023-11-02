@@ -119,7 +119,7 @@ public class InicioActivity extends AppCompatActivity {
                 .build();
 
         ApiService apiService = retrofit.create(ApiService.class);
-        Call<ResponseBody> call = apiService.getStringFromPython();
+        Call<ResponseBody> call = apiService.getRandomNumber();
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -127,8 +127,9 @@ public class InicioActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     try {
                         JSONObject jsonObject = new JSONObject(response.body().string());
-                        String data = jsonObject.getString("data");
-                        campoTxt.setText(data);
+                        int randomNumber = jsonObject.getInt("number");
+                        mTxtReceive.setText(String.valueOf(randomNumber));
+
                     } catch (JSONException | IOException e) {
                         e.printStackTrace();
                         Log.e("API_ERROR", "Error al procesar la respuesta", e);

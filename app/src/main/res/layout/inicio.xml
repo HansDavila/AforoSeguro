@@ -39,13 +39,11 @@
 
     <EditText
         android:id="@+id/aforo"
-        android:layout_width="62dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:ems="10"
-        android:inputType="textPersonName|number"
-        android:text="0"
-        android:visibility="visible" />
+        android:inputType="none"
+        android:focusable="false"
+        android:editable="false" />
 
     <Button
         android:id="@+id/abrirpuerta"
