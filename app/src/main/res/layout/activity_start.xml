@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#009688"
+    android:background="#FFFFFF"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".StartActivity">
@@ -15,7 +15,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/aforoSeguro"
-        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -27,7 +29,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginRight="10dp"
         android:text="@string/iniciar"
-        app:backgroundTint="#673AB7" />
+        app:backgroundTint="#066FFF" />
 
     <Button
         android:id="@+id/register"
@@ -37,20 +39,21 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:text="@string/registrar"
-        app:backgroundTint="#673AB7" />
+        app:backgroundTint="#0FCE00" />
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="18dp"
         android:text="@string/seleccion"
 
-        android:textColor="#FFFFFF"
-        />
+        android:textColor="#FFFFFF" />
+
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:background="#90B5D3"
+        android:background="#9D9E9F"
         android:visibility="visible" />
 
 

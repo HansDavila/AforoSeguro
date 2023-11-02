@@ -8,13 +8,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
-        android:layout_height="wrap_content"
+        android:id="@+id/titulo_conectar"
         android:layout_width="wrap_content"
-        android:textSize="44sp"
+        android:layout_height="wrap_content"
+        android:background="#066FFF"
+        android:gravity="center"
         android:padding="10dp"
         android:text="@string/conectar_bt"
-        android:gravity="center"
-        android:id="@+id/titulo_conectar"/>
+        android:textColor="#FFFFFF"
+        android:textSize="44sp"
+        android:textStyle="bold" />
 
 
     -<LinearLayout
@@ -32,6 +35,7 @@
         android:text="@string/buscar"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        app:backgroundTint="#0FCE00"
         android:id="@+id/search" />
 
     <Button
@@ -40,6 +44,7 @@
         android:text="@string/conectar"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        app:backgroundTint="#0FCE00"
         android:id="@+id/connect" />
 
     <Button
@@ -48,6 +53,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:text="@string/continuar_no_bt"
+        app:backgroundTint="#0FCE00"
         android:id="@+id/continuar_no_bt" />
 
 </LinearLayout>

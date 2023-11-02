@@ -21,7 +21,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/conferenceName" />
+        app:layout_constraintTop_toBottomOf="@+id/conferenceName"
+        app:backgroundTint="#0FCE00"/>
 
     <EditText
         android:id="@+id/conferenceName"

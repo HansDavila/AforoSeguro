@@ -16,7 +16,10 @@
         android:layout_marginLeft="75dp"
         android:layout_marginTop="30dp"
         android:text="@string/aforoSeguro"
-        android:textSize="25dp"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        android:textStyle="bold"
         android:visibility="visible" />
 
     <TextView
@@ -28,6 +31,7 @@
         android:layout_marginTop="50dp"
         android:text="@string/aforo"
         android:textSize="25dp"
+        android:textStyle="bold"
         android:visibility="visible" />
 
     <EditText
@@ -72,7 +76,7 @@
         android:textAllCaps="false"
         android:textSize="20dp"
         android:visibility="visible"
-        app:backgroundTint="@android:color/holo_blue_dark" />
+        app:backgroundTint="#0FCE00" />
 
     <TextView
         android:layout_width="wrap_content"
