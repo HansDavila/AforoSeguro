@@ -10,6 +10,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface ApiService {
-    @GET("/get_random_number")
-    Call<ResponseBody> getRandomNumber();
+    @GET("/get_aforo")
+    Call<ResponseBody> getAforo();
 }

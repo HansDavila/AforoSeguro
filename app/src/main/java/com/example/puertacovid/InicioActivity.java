@@ -11,6 +11,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -84,9 +85,47 @@ public class InicioActivity extends AppCompatActivity {
     String command;
     //private OutputStream outputStream;
 
+    private Handler handler = new Handler();
+    private Runnable runnableCode = new Runnable() {
+        @Override
+        public void run() {
+            fetchAforo(); // Método que hace la solicitud GET
+            handler.postDelayed(this, 10000); // Reprograma el runnable cada 10 segundos
+        }
+    };
+
+
+
     @Override
     protected void onResume() {
         super.onResume();
+
+        // Localiza el TextView de capacidad
+        TextView textViewCapacidad = findViewById(R.id.capacidad);
+
+        // Crea una referencia al documento de Firestore
+        DocumentReference aforoRef = fStore.collection("Estado").document("Aforo");
+
+        // Añade un EventListener para escuchar los cambios en tiempo real
+        aforoRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w(TAG, "Listen failed.", e);
+                    return;
+                }
+
+                if (snapshot != null && snapshot.exists()) {
+                    // Obtiene el valor de Maximo y actualiza el TextView
+                    String maximo = snapshot.getString("Maximo");
+                    textViewCapacidad.setText("Capacidad: " + maximo + " personas");
+                } else {
+                    Log.d(TAG, "Current data: null");
+                }
+            }
+        });
+
         DocumentReference df = fStore.collection("Estado").document("EstadoPuerta");
         df.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
@@ -113,39 +152,7 @@ public class InicioActivity extends AppCompatActivity {
 
         campoTxt = findViewById(R.id.CampoTxt);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.7:5000/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        ApiService apiService = retrofit.create(ApiService.class);
-        Call<ResponseBody> call = apiService.getRandomNumber();
-
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    try {
-                        JSONObject jsonObject = new JSONObject(response.body().string());
-                        int randomNumber = jsonObject.getInt("number");
-                        mTxtReceive.setText(String.valueOf(randomNumber));
-
-                    } catch (JSONException | IOException e) {
-                        e.printStackTrace();
-                        Log.e("API_ERROR", "Error al procesar la respuesta", e);
-                    }
-                } else {
-                    Log.e("API_ERROR", "Respuesta no exitosa: " + response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                t.printStackTrace();
-                Log.e("API_ERROR", "Error al hacer la llamada", t);
-                campoTxt.setText("Error: " + t.getMessage());
-            }
-        });
+        handler.post(runnableCode);
 
         spinner = findViewById(R.id.spinner);
         mAuth = FirebaseAuth.getInstance();
@@ -317,6 +324,51 @@ mBtnConectar.setOnClickListener(new View.OnClickListener() {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    private void fetchAforo() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.0.7:5000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ApiService apiService = retrofit.create(ApiService.class);
+        Call<ResponseBody> call = apiService.getAforo();
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.body().string());
+                        int randomNumber = jsonObject.getInt("aforo");
+                        mTxtReceive.setText(String.valueOf(randomNumber));
+                    } catch (JSONException | IOException e) {
+                        e.printStackTrace();
+                        Log.e("API_ERROR", "Error al procesar la respuesta", e);
+                    }
+                } else {
+                    Log.e("API_ERROR", "Respuesta no exitosa: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                t.printStackTrace();
+                Log.e("API_ERROR", "Error al hacer la llamada", t);
+                campoTxt.setText("Error: " + t.getMessage());
+            }
+        });
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Detiene cualquier callback pendiente al destruir la actividad
+        handler.removeCallbacks(runnableCode);
+    }
+
     /*private class ReadInput implements Runnable {
 
         private boolean bStop = false;
