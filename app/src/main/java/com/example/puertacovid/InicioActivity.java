@@ -80,6 +80,7 @@ public class InicioActivity extends AppCompatActivity {
     //private BluetoothSocket mBTSocket;
     //private ReadInput mReadThread = null;
     //private boolean mIsUserInitiatedDisconnect = false;
+    String baseUrl;
 
     private TextView mTxtReceive;
     private CheckBox chkReceiveText;
@@ -104,7 +105,7 @@ public class InicioActivity extends AppCompatActivity {
     private Runnable runnableCode = new Runnable() {
         @Override
         public void run() {
-            fetchAforo(); // Método que hace la solicitud GET
+            fetchAforo(baseUrl); // Método que hace la solicitud GET
             handler.postDelayed(this, 10000); // Reprograma el runnable cada 10 segundos
         }
     };
@@ -167,6 +168,10 @@ public class InicioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
+
+        // Recupera la URL del Intent
+        Intent intent = getIntent();
+        baseUrl = intent.getStringExtra("URL");
 
         campoTxt = findViewById(R.id.CampoTxt);
 
@@ -339,9 +344,9 @@ public class InicioActivity extends AppCompatActivity {
     }
 
 
-    private void fetchAforo() {
+    private void fetchAforo(String baseUrl) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://9559-34-83-70-95.ngrok.io")
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

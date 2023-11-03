@@ -111,7 +111,7 @@ public class ConectarBt extends AppCompatActivity {
         connect_noBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ConectarBt.this, InicioActivity.class);
+                Intent i = new Intent(ConectarBt.this, ConfigurarDireccion.class);
                 startActivity(i);
             }
         });

@@ -51,6 +51,7 @@
     <string name="continue_text">Continuar</string>
     <string name="checkbox">Constant Notification (1 min)</string>
     <string name="aforoActual">Current Capacity</string>
+    <string name="direccionTxt">Enter the camera address</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

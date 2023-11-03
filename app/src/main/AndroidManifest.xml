@@ -17,29 +17,70 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/aforoSeguro"
-        tools:replace="android:label"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PuertaCovid"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".sdktest.JoinVideoCall" android:screenOrientation="portrait"/>
-        <activity android:name=".sdktest.videoLlamada" android:screenOrientation="portrait"/>
-        <activity android:name=".ConectarBt" android:screenOrientation="portrait"/>
-        <activity android:name=".CuentaUsuario" android:screenOrientation="portrait"/>
-        <activity android:name=".Cuenta" android:screenOrientation="portrait"/>
-        <activity android:name=".Historial" android:screenOrientation="portrait"/>
-        <activity android:name=".HomeActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ChatActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".InicioSesion" android:screenOrientation="portrait"/>
-        <activity android:name=".RegistroActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".RegisterActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".UsuarioActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Mensaje_usuario" android:screenOrientation="portrait"/>
-        <activity android:name=".Mensaje_advertencia" android:screenOrientation="portrait"/>
-        <activity android:name=".Registro_dia" android:screenOrientation="portrait"/>
-        <activity android:name=".InicioActivity" android:screenOrientation="portrait" android:configChanges="orientation|screenSize" android:launchMode="singleTop"/>
-        <activity android:name=".StartActivity" android:screenOrientation="portrait">
+        android:usesCleartextTraffic="true"
+        tools:replace="android:label">
+        <activity
+            android:name=".ConfigurarDireccion"
+            android:exported="false" />
+        <activity
+            android:name=".sdktest.JoinVideoCall"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sdktest.videoLlamada"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConectarBt"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CuentaUsuario"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Cuenta"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Historial"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChatActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InicioSesion"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RegistroActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UsuarioActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Mensaje_usuario"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Mensaje_advertencia"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Registro_dia"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InicioActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StartActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
