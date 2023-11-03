@@ -341,7 +341,7 @@ public class InicioActivity extends AppCompatActivity {
 
     private void fetchAforo() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.7:5000/")
+                .baseUrl("https://9559-34-83-70-95.ngrok.io")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -405,12 +405,7 @@ public class InicioActivity extends AppCompatActivity {
         handler.removeCallbacks(runnableCode);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.e("TAG", "Se pone en pausa");
-        handler.removeCallbacks(runnableCode); // Detiene el runnable cuando la actividad se pausa
-    }
+
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -439,8 +434,9 @@ public class InicioActivity extends AppCompatActivity {
 
         // Crea un Intent para iniciar InicioActivity
         Intent intent = new Intent(this, InicioActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
 
         // Construir la notificación
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
