@@ -84,6 +84,7 @@ public class InicioActivity extends AppCompatActivity {
     private TextView mTxtReceive;
     private CheckBox chkReceiveText;
     private TextView campoTxt;
+    private boolean autoControlPuerta = false;
 
     private long tiempoUltimaNotificacion = 0;
 
@@ -240,16 +241,22 @@ public class InicioActivity extends AppCompatActivity {
             }
         });*/
 
-mBtnConectar.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        DocumentReference df = fStore.collection("Estado").document("Aforo");
-        Map<String, Object> userInfo = new HashMap<>();
-        userInfo.put("Maximo", mTxtReceive.getText().toString());
-        df.set(userInfo);
+        mBtnConectar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                autoControlPuerta = !autoControlPuerta; // Cambia el estado
 
-    }
-});
+                if (autoControlPuerta) {
+                    mBtnAbrir.setEnabled(false); // Deshabilita mBtnAbrir
+                    mBtnConectar.setText("Control Manual"); // Cambia el texto de mBtnConectar
+                    mBtnConectar.setBackgroundColor(Color.parseColor("#FFA500")); // Cambia el color de mBtnConectar
+                } else {
+                    mBtnAbrir.setEnabled(true); // Habilita mBtnAbrir
+                    mBtnConectar.setText("Automatizar"); // Restablece el texto de mBtnConectar
+                    mBtnConectar.setBackgroundColor(Color.parseColor("#ff0099cc")); // Restablece el color de mBtnConectar
+                }
+            }
+        });
 
         mBtnAbrir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -352,6 +359,9 @@ mBtnConectar.setOnClickListener(new View.OnClickListener() {
 
                         int actualPersonas = mTxtReceive.getText().toString().equals("") ? 0 : Integer.parseInt(mTxtReceive.getText().toString());
                         if (actualPersonas >= Integer.parseInt(maximo)) {
+                            if(autoControlPuerta){
+                                cerrarPuerta();
+                            }
                             if (chkReceiveText.isChecked()) { // Si el CheckBox está activo
                                 if (!notificacionEnviada || (System.currentTimeMillis() - tiempoUltimaNotificacion) >= 60000) {
                                     mostrarNotificacion("Aforo máximo alcanzado", "El aforo actual ha superado el límite permitido." );
@@ -363,6 +373,9 @@ mBtnConectar.setOnClickListener(new View.OnClickListener() {
                                 notificacionEnviada = true;
                             }
                         } else if (actualPersonas < Integer.parseInt(maximo)) {
+                            if(autoControlPuerta) {
+                                abrirPuerta();
+                            }
                             notificacionEnviada = false; // Restablece la marca si el aforo está por debajo del máximo
                         }
                     } catch (JSONException | IOException e) {
@@ -443,6 +456,31 @@ mBtnConectar.setOnClickListener(new View.OnClickListener() {
         // Mostrar la notificación
         notificationManager.notify(1, builder.build());
     }
+
+    private void abrirPuerta() {
+        // Cambia el color del botón a verde
+        mBtnAbrir.setBackgroundColor(Color.parseColor("#71ae00"));
+        // Cambia el texto del botón
+        mBtnAbrir.setText("Abrir Puerta");
+        // Actualiza Firestore
+        DocumentReference df = fStore.collection("Estado").document("EstadoPuerta");
+        Map<String, Object> userInfo = new HashMap<>();
+        userInfo.put("Puerta", "Abierta");
+        df.set(userInfo);
+    }
+
+    private void cerrarPuerta() {
+        // Cambia el color del botón a rojo
+        mBtnAbrir.setBackgroundColor(Color.parseColor("#ae0000"));
+        // Cambia el texto del botón
+        mBtnAbrir.setText("Cerrar Puerta");
+        // Actualiza Firestore
+        DocumentReference df = fStore.collection("Estado").document("EstadoPuerta");
+        Map<String, Object> userInfo = new HashMap<>();
+        userInfo.put("Puerta", "Cerrada");
+        df.set(userInfo);
+    }
+
 
 
 
