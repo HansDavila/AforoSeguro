@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -113,6 +114,8 @@ public class InicioActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        handler.post(runnableCode); // Inicia el runnable cuando la actividad se resume
+
         // Localiza el TextView de capacidad
         TextView textViewCapacidad = findViewById(R.id.capacidad);
 
@@ -165,8 +168,6 @@ public class InicioActivity extends AppCompatActivity {
         setContentView(R.layout.inicio);
 
         campoTxt = findViewById(R.id.CampoTxt);
-
-        handler.post(runnableCode);
 
         spinner = findViewById(R.id.spinner);
         mAuth = FirebaseAuth.getInstance();
@@ -353,12 +354,12 @@ mBtnConectar.setOnClickListener(new View.OnClickListener() {
                         if (actualPersonas >= Integer.parseInt(maximo)) {
                             if (chkReceiveText.isChecked()) { // Si el CheckBox está activo
                                 if (!notificacionEnviada || (System.currentTimeMillis() - tiempoUltimaNotificacion) >= 60000) {
-                                    mostrarNotificacionAforoMaximo();
+                                    mostrarNotificacion("Aforo máximo alcanzado", "El aforo actual ha superado el límite permitido." );
                                     notificacionEnviada = true;
                                     tiempoUltimaNotificacion = System.currentTimeMillis(); // Guarda el tiempo actual
                                 }
                             } else if (!notificacionEnviada) { // Si el CheckBox no está activo y no se ha enviado notificación
-                                mostrarNotificacionAforoMaximo();
+                                mostrarNotificacion("Aforo máximo alcanzado", "El aforo actual ha superado el límite permitido." );
                                 notificacionEnviada = true;
                             }
                         } else if (actualPersonas < Integer.parseInt(maximo)) {
@@ -387,19 +388,34 @@ mBtnConectar.setOnClickListener(new View.OnClickListener() {
     protected void onDestroy() {
         super.onDestroy();
         // Detiene cualquier callback pendiente al destruir la actividad
+        Log.e("TAG", "Se pone en destruido");
         handler.removeCallbacks(runnableCode);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e("TAG", "Se pone en pausa");
+        handler.removeCallbacks(runnableCode); // Detiene el runnable cuando la actividad se pausa
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Aquí puedes poner código para manejar el cambio de configuración si es necesario
+    }
+
+
     // Método para mostrar la notificación
-    private void mostrarNotificacionAforoMaximo() {
+    private void mostrarNotificacion(String titulo, String mensaje) {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        String CHANNEL_ID = "aforoMaximo"; // Usar el mismo ID para el canal y la notificación
+        String CHANNEL_ID = "notificacionesApp"; // Cambiado para ser más general
 
         // Crear el canal de notificación para versiones de Android Oreo o superiores
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             int importance = NotificationManager.IMPORTANCE_HIGH; // Configura la importancia
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Aforo Máximo", importance);
-            channel.setDescription("Notificaciones de aforo máximo alcanzado");
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Notificaciones App", importance);
+            channel.setDescription("Notificaciones de la aplicación");
             channel.setShowBadge(true);
             channel.enableVibration(true); // Habilitar vibración
             channel.enableLights(true); // Habilitar luces
@@ -408,19 +424,26 @@ mBtnConectar.setOnClickListener(new View.OnClickListener() {
             notificationManager.createNotificationChannel(channel);
         }
 
+        // Crea un Intent para iniciar InicioActivity
+        Intent intent = new Intent(this, InicioActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
         // Construir la notificación
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_stat_name) // Asegúrate de que este es un icono válido
-                .setContentTitle("Aforo máximo alcanzado")
-                .setContentText("El aforo actual ha superado el límite permitido.")
-                .setPriority(NotificationCompat.PRIORITY_HIGH) // Para versiones anteriores a Oreo
+                .setSmallIcon(R.drawable.ic_stat_name)
+                .setContentTitle(titulo)
+                .setContentText(mensaje)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                .setAutoCancel(true) // La notificación se cancela al tocarla
-                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC); // Para mostrar en la pantalla de bloqueo y en la barra de estado
+                .setAutoCancel(true)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setContentIntent(pendingIntent); // Asigna el PendingIntent a la notificación
 
         // Mostrar la notificación
         notificationManager.notify(1, builder.build());
     }
+
 
 
     /*private class ReadInput implements Runnable {

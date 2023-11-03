@@ -49,6 +49,8 @@
     <string name="date_of_birth">Fecha de nacimiento</string>
     <string name="bio">bio</string>
     <string name="continue_text">Continuar</string>
+    <string name="checkbox">Constant Notification (1 min)</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
