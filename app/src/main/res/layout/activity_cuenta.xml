@@ -8,7 +8,8 @@
     android:padding="20dp"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/imagendeaforo3">
 
     <TextView
         android:id="@+id/recuperacontraseña"
