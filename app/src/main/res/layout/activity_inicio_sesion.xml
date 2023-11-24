@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#009688"
+    android:baselineAligned="true"
     android:gravity="center"
     android:orientation="vertical"
     android:paddingHorizontal="30dp"
+    android:background="@drawable/imagendeaforo3"
     tools:context=".MainActivity">
 
 
@@ -15,8 +16,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome"
-        android:textColor="#3F51B5"
-        android:textSize="40dp"
+        android:textAllCaps="true"
+        android:textColor="#006FFF"
+        android:textSize="34sp"
         android:textStyle="bold" />
 
     <RelativeLayout
@@ -28,12 +30,12 @@
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:background="@drawable/rectangular_field"
+            android:background="@drawable/button_rounded"
             android:hint="@string/escribiremail"
             android:inputType="textEmailAddress"
             android:paddingVertical="15dp"
             android:paddingLeft="60dp"
-            android:textColor="#000000" />
+            android:textColor="#686666" />
 
         <ImageView
             android:layout_width="35dp"
@@ -53,12 +55,12 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:background="@drawable/rectangular_field"
+            android:background="@drawable/button_rounded"
             android:hint="@string/escribircontra"
             android:inputType="textPassword"
             android:paddingVertical="15dp"
             android:paddingLeft="60dp"
-            android:textColor="#000000" />
+            android:textColor="#686666" />
 
         <ImageView
             android:layout_width="35dp"
@@ -79,7 +81,8 @@
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="25dp"
-        app:backgroundTint="#3F51B5" />
+        android:textStyle="bold"
+        app:backgroundTint="#066FFF" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -93,31 +96,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nocuenta"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="16sp" />
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="310dp"
+        android:layout_width="300dp"
         android:layout_height="18dp"
         android:text="@string/seleccion"
-        android:textColor="#FFFFFF" />
+        android:textColor="#000000" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="300dp"
         android:layout_height="52dp"
-        android:background="#90B5D3"
+        android:background="#BDBEBF"
         android:visibility="visible" />
 
     <TextView
         android:id="@+id/olvido"
-        android:layout_width="match_parent"
+        android:layout_width="271dp"
         android:layout_height="wrap_content"
         android:text="¿Olvido su contraseña?"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="24sp" />
 
 </LinearLayout>

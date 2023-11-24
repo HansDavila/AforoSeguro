@@ -6,14 +6,27 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:padding="20dp"
+    android:background="@drawable/imagendeaforo3"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" android:text="@string/recuperacontraseña" android:textSize="25dp" android:layout_marginTop="100dp" android:layout_marginStart="60dp" android:id="@+id/recuperacontraseña"/>
+    <TextView
+        android:id="@+id/recuperacontraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/recuperacontraseña"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_marginTop="60dp" android:id="@+id/email" android:hint="@string/ingresaemail"/>
 
-    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:text="@string/reestablecercontraseña" android:layout_marginTop="90dp" android:id="@+id/brestablecer" app:backgroundTint="@android:color/holo_red_light" android:textColor="@android:color/black"/>
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:text="@string/reestablecercontraseña" android:layout_marginTop="90dp" android:id="@+id/brestablecer" app:backgroundTint="#006FFF" android:textColor="@android:color/black"/>
 
 </LinearLayout>

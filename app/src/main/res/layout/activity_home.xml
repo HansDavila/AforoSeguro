@@ -5,6 +5,7 @@
     android:id="@+id/parent_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/imagendeaforo3"
     tools:context=".HomeActivity">
 
     <androidx.viewpager2.widget.ViewPager2
@@ -16,17 +17,16 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabDots"
-        android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary"
-        android:foregroundTint="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabTextColor="@color/default_text_color"
-        app:tabIndicatorColor="@android:color/white"
-        app:tabSelectedTextColor="@android:color/white"
-        app:tabMaxWidth="0dp"
-        app:tabGravity="fill"
-        app:tabMode="fixed"
+        android:layout_alignParentTop="true"
+        android:background="#006FFF"
+        android:foregroundTint="@android:color/white"
         app:tabBackground="@drawable/tab_selector"
-        />
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@android:color/white"
+        app:tabMaxWidth="0dp"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@android:color/white"
+        app:tabTextColor="@color/default_text_color" />
 </RelativeLayout>

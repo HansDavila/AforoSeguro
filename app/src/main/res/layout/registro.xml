@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#009688"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="@drawable/imagendeaforo3"
     android:paddingHorizontal="30dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
 
 
         <LinearLayout
@@ -34,11 +34,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="4dp"
                     android:layout_weight="1">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edt_first_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/first_name"/>
+                        android:hint="@string/first_name" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,11 +53,12 @@
                         android:id="@+id/edt_last_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/last_name"/>
+                        android:hint="@string/last_name" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,7 +68,7 @@
                     android:id="@+id/edt_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/phone"/>
+                    android:hint="@string/phone" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
@@ -93,22 +95,22 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="4dp"
                 android:layout_weight="1">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_bio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/bio"
                     android:inputType="number"
-                    android:maxLength="10"
-                    android:hint="@string/bio"/>
+                    android:maxLength="10" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
-
-
 
 
         <RelativeLayout
@@ -201,7 +203,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/administrador"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="20sp" />
 
             <CheckBox
@@ -212,7 +214,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"
                 android:text="@string/usuario"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -226,7 +228,7 @@
             android:textAllCaps="false"
             android:textColor="#ffffff"
             android:textSize="25dp"
-            app:backgroundTint="#3F51B5" />
+            app:backgroundTint="#0FCE00" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -240,7 +242,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/yacuenta"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textSize="16sp" />
 
             <TextView
@@ -249,7 +251,7 @@
                 android:layout_height="wrap_content"
 
                 android:text="@string/iniciar"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
